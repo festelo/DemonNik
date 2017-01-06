@@ -13,40 +13,40 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     @FXML
-    private ChoiceBox count1;
+    private ChoiceBox amountOfTeapots;
     @FXML
-    private ChoiceBox count2;
+    private ChoiceBox amountOfBulbs;
     @FXML
-    private ChoiceBox count3;
+    private ChoiceBox amountOfComputers;
 
     @FXML
-    private TextField energy1;
+    private TextField energyForTeapot;
     @FXML
-    private TextField energy2;
+    private TextField energyForBulb;
     @FXML
-    private TextField energy3;
+    private TextField energyForComputer;
 
     @FXML
-    private Label state1;
+    private Label stateOfTeapots;
     @FXML
-    private Label state2;
+    private Label stateOfBulbs;
     @FXML
-    private Label state3;
+    private Label stateOfComputers;
 
     @FXML
     private ToggleButton btn;
 
-    public void press() {
+    public void pressCounter() {
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        count1.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9" , "10");
-        count1.getSelectionModel().select("1");
-        count2.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9" , "10");
-        count2.getSelectionModel().select("1");
-        count3.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9" , "10");
-        count3.getSelectionModel().select("1");
+        amountOfTeapots.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9" , "10");
+        amountOfTeapots.getSelectionModel().select("1");
+        amountOfBulbs.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9" , "10");
+        amountOfBulbs.getSelectionModel().select("1");
+        amountOfComputers.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9" , "10");
+        amountOfComputers.getSelectionModel().select("1");
     }
 }

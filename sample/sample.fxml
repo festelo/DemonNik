@@ -12,20 +12,20 @@
           xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Label prefHeight="17.0" minWidth="27.0" text="Чайник:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-       <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="count1"/>
-       <TextField GridPane.columnIndex="2" GridPane.rowIndex="0" fx:id="energy1" />
-       <Label GridPane.columnIndex="3" GridPane.rowIndex="0" text="ВЫКЛ" fx:id="state1" />
+       <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="amountOfTeapots"/>
+       <TextField GridPane.columnIndex="2" GridPane.rowIndex="0" fx:id="energyForTeapot" />
+       <Label GridPane.columnIndex="3" GridPane.rowIndex="0" text="ВЫКЛ" fx:id="stateOfTeapots" />
       <Label prefHeight="17.0" minWidth="27.0" text="Лампочка:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-       <ChoiceBox  GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="count2" />
-       <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="energy2" />
-       <Label GridPane.columnIndex="3" GridPane.rowIndex="1" text="ВЫКЛ" fx:id="state2" />
+       <ChoiceBox  GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="amountOfBulbs" />
+       <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="energyForBulb" />
+       <Label GridPane.columnIndex="3" GridPane.rowIndex="1" text="ВЫКЛ" fx:id="stateOfBulbs" />
       <Label prefHeight="17.0" minWidth="27.0" text="Компьютер:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-       <ChoiceBox  GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="count3" />
-       <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" fx:id="energy3" />
-       <Label GridPane.columnIndex="3" GridPane.rowIndex="2" text="ВЫКЛ" fx:id="state3" />
+       <ChoiceBox  GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="amountOfComputers" />
+       <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" fx:id="energyForComputer" />
+       <Label GridPane.columnIndex="3" GridPane.rowIndex="2" text="ВЫКЛ" fx:id="stateOfComputers" />
 
        <ToggleButton prefHeight="66.0" prefWidth="80.0" text="СЧЁТЧИК" GridPane.columnIndex="4"
-                     GridPane.rowIndex="0" GridPane.rowSpan="3" onAction="#press" fx:id="btn"/>
+                     GridPane.rowIndex="0" GridPane.rowSpan="3" onAction="#pressCounter" fx:id="counter"/>
    </children>
    <rowConstraints>
       <RowConstraints />
