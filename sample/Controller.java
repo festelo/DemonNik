@@ -10,8 +10,6 @@ import javafx.scene.control.ToggleButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static java.lang.Thread.sleep;
-
 public class Controller implements Initializable {
 
     @FXML
@@ -41,7 +39,7 @@ public class Controller implements Initializable {
     @FXML
     private TextField maxEnergyPerTime;
 
-    static ThreadForCounter tmpThread;
+    static ThreadForCounter counterThread;
 
     int currentEnergy = 0;
     int energyPerTime = 0;
@@ -60,7 +58,7 @@ public class Controller implements Initializable {
         int int_energyForComputer = Integer.parseInt(energyForComputer.getText());
         int energyForAllComputers = int_amountOfComputers  * int_energyForComputer;
 
-        int energyPerTime = energyForAllTeapots + energyForAllBulbs + energyForAllComputers;
+        energyPerTime = energyForAllTeapots + energyForAllBulbs + energyForAllComputers;
         int_maxEnergyPerTime = Integer.parseInt(String.valueOf(maxEnergyPerTime.getText()));
 
         if (energyPerTime > int_maxEnergyPerTime) {
@@ -68,25 +66,31 @@ public class Controller implements Initializable {
             counter.setSelected(false);
             return;
         } else {
-            tmpThread = new ThreadForCounter();
-            tmpThread.start();
+            counterThread = new ThreadForCounter();
+            counterThread.start();
         }
     }
 
-    class ThreadForCounter extends Thread
-    {
+    class ThreadForCounter extends Thread {
         @Override
         public void run() {
             while(true) {
-                currentEnergy = currentEnergy + energyPerTime;
-                System.out.println(String.valueOf(currentEnergy));
-                //counter.setText(String.valueOf((int)currentEnergy));
                 try {
+                    currentEnergy += energyPerTime;
+                    counter.setText(String.valueOf(currentEnergy));
+                    stateOfTeapots.setText("ВКЛ");
+                    stateOfBulbs.setText("ВКЛ");
                     sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } catch(IllegalStateException e1) {
+                    e1.printStackTrace();
+                } catch(InterruptedException e2) {
+                    e2.printStackTrace();
                 }
-                if(!counter.isSelected()) break;
+                if(!counter.isSelected()) {
+                    stateOfTeapots.setText("Остывает");
+                    stateOfBulbs.setText("ВЫКЛ");
+                    break;
+                }
             }
         }
     }
