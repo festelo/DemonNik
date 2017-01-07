@@ -40,6 +40,9 @@ public class Controller implements Initializable {
     @FXML
     private ToggleButton counter;
 
+    @FXML
+    private TextField maxEnergyPerTime;
+
     public void pressCounter() throws InterruptedException {
         int int_amountOfTeapots = Integer.parseInt((String) amountOfTeapots.getValue());
         int int_energyForTeapot = Integer.parseInt(energyForTeapot.getText());
@@ -57,8 +60,8 @@ public class Controller implements Initializable {
 
         int currentEnergy = 0;
 
-        if (energyPerTime > MAX_ENERGY_PER_TIME) {
-            counter.setText("НЕ РАБОТАЕТ");
+        if (energyPerTime > Integer.parseInt(String.valueOf(maxEnergyPerTime.getText()))) {
+            counter.setText("ВЫКЛ");
             counter.setSelected(false);
             return;
         } else {

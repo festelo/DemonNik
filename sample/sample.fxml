@@ -14,18 +14,19 @@
       <Label prefHeight="17.0" minWidth="27.0" text="Чайник:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
        <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="amountOfTeapots"/>
        <TextField GridPane.columnIndex="2" GridPane.rowIndex="0" fx:id="energyForTeapot" />
-       <Label GridPane.columnIndex="3" GridPane.rowIndex="0" text="ВЫКЛ" fx:id="stateOfTeapots" />
+       <Label GridPane.columnIndex="3" GridPane.rowIndex="0" text="ВЫКЛ" minWidth="80.0" fx:id="stateOfTeapots" />
       <Label prefHeight="17.0" minWidth="27.0" text="Лампочка:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
        <ChoiceBox  GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="amountOfBulbs" />
        <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="energyForBulb" />
-       <Label GridPane.columnIndex="3" GridPane.rowIndex="1" text="ВЫКЛ" fx:id="stateOfBulbs" />
+       <Label GridPane.columnIndex="3" GridPane.rowIndex="1" text="ВЫКЛ" minWidth="80.0" fx:id="stateOfBulbs" />
       <Label prefHeight="17.0" minWidth="27.0" text="Компьютер:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
        <ChoiceBox  GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="amountOfComputers" />
        <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" fx:id="energyForComputer" />
-       <Label GridPane.columnIndex="3" GridPane.rowIndex="2" text="ВЫКЛ" fx:id="stateOfComputers" />
+       <Label GridPane.columnIndex="3" GridPane.rowIndex="2" text="ВЫКЛ" minWidth="80.0" fx:id="stateOfComputers" />
 
-       <ToggleButton prefHeight="66.0" prefWidth="80.0" text="СЧЁТЧИК" GridPane.columnIndex="4"
-                     GridPane.rowIndex="0" GridPane.rowSpan="3" onAction="#pressCounter" fx:id="counter"/>
+       <ToggleButton prefHeight="66.0" prefWidth="80.0" text="0" GridPane.columnIndex="4"
+                     GridPane.rowIndex="0" GridPane.rowSpan="2" onAction="#pressCounter" fx:id="counter"/>
+       <TextField GridPane.columnIndex="4" GridPane.rowIndex="2" fx:id="maxEnergyPerTime" maxWidth="80.0"/>
    </children>
    <rowConstraints>
       <RowConstraints />
