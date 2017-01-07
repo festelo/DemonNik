@@ -14,8 +14,6 @@ import static java.lang.Thread.sleep;
 
 public class Controller implements Initializable {
 
-    final int MAX_ENERGY_PER_TIME = 1000;
-
     @FXML
     private ChoiceBox amountOfTeapots;
     @FXML
@@ -43,6 +41,12 @@ public class Controller implements Initializable {
     @FXML
     private TextField maxEnergyPerTime;
 
+    static ThreadForCounter tmpThread;
+
+    int currentEnergy = 0;
+    int energyPerTime = 0;
+    int int_maxEnergyPerTime = 0;
+
     public void pressCounter() throws InterruptedException {
         int int_amountOfTeapots = Integer.parseInt((String) amountOfTeapots.getValue());
         int int_energyForTeapot = Integer.parseInt(energyForTeapot.getText());
@@ -57,22 +61,32 @@ public class Controller implements Initializable {
         int energyForAllComputers = int_amountOfComputers  * int_energyForComputer;
 
         int energyPerTime = energyForAllTeapots + energyForAllBulbs + energyForAllComputers;
+        int_maxEnergyPerTime = Integer.parseInt(String.valueOf(maxEnergyPerTime.getText()));
 
-        int currentEnergy = 0;
-
-        if (energyPerTime > Integer.parseInt(String.valueOf(maxEnergyPerTime.getText()))) {
+        if (energyPerTime > int_maxEnergyPerTime) {
             counter.setText("ВЫКЛ");
             counter.setSelected(false);
             return;
         } else {
+            tmpThread = new ThreadForCounter();
+            tmpThread.start();
+        }
+    }
+
+    class ThreadForCounter extends Thread
+    {
+        @Override
+        public void run() {
             while(true) {
                 currentEnergy = currentEnergy + energyPerTime;
-                System.out.println(String.valueOf((int)currentEnergy));
+                System.out.println(String.valueOf(currentEnergy));
                 //counter.setText(String.valueOf((int)currentEnergy));
-                Thread.sleep(5000);
-                if(!counter.isSelected()) {
-                    break;
+                try {
+                    sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                if(!counter.isSelected()) break;
             }
         }
     }
