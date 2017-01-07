@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -77,23 +78,32 @@ public class Controller implements Initializable {
             while(true) {
                 try {
                     currentEnergy += energyPerTime;
-                    counter.setText(String.valueOf(currentEnergy));
-                    stateOfTeapots.setText("ВКЛ");
-                    stateOfBulbs.setText("ВКЛ");
-                    sleep(5000);
+                    Platform.runLater(new Runnable() {
+                        @Override public void run() {
+                            counter.setText(String.valueOf(currentEnergy));
+                            stateOfTeapots.setText("ВКЛ");
+                            stateOfBulbs.setText("ВКЛ");
+                        }
+                    });
+                    sleep(1000);
                 } catch(IllegalStateException e1) {
                     e1.printStackTrace();
                 } catch(InterruptedException e2) {
                     e2.printStackTrace();
                 }
                 if(!counter.isSelected()) {
-                    stateOfTeapots.setText("Остывает");
-                    stateOfBulbs.setText("ВЫКЛ");
+                    Platform.runLater(new Runnable() {
+                        @Override public void run() {
+                            stateOfTeapots.setText("Остывает");
+                            stateOfBulbs.setText("ВЫКЛ");
+                        }
+                    });
                     break;
                 }
             }
         }
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
