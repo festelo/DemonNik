@@ -104,7 +104,6 @@ public class Controller implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         amountOfTeapots.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9" , "10");
